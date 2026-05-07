@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyen An Job – Việc làm IT & Tech chọn lọc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #ffffff;
+    --bg2:      #fafaf8;
+    --bg3:      #ffffff;
+    --border:   rgba(0,0,0,0.08);
+    --border-hover: #b8973a;
+    --text:     #1a1a1a;
+    --text2:    #555550;
+    --text3:    #999990;
+    --gold:     #b8973a;
+    --gold2:    #d4af5a;
+    --gold-dim: rgba(184,151,58,0.08);
+    --gold-dim2:rgba(184,151,58,0.15);
+    --black:    #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.875rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: #1a1a1a;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 17px; color: #b8973a;
+    letter-spacing: -1px; flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .logo-name {
+    font-size: 16px; font-weight: 700;
+    color: #1a1a1a; letter-spacing: 0.2px;
+  }
+
+  .logo-name span { color: #b8973a; }
+
+  .header-badge {
+    font-size: 11px; font-weight: 600;
+    color: #b8973a;
+    border: 1px solid rgba(184,151,58,0.35);
+    background: rgba(184,151,58,0.08);
+    border-radius: 20px;
+    padding: 4px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 4.5rem 1.5rem 3.5rem;
+    text-align: center;
+    position: relative;
+    background: #fafaf8;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, #b8973a, #d4af5a, #b8973a, transparent);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: #b8973a;
+    border: 1px solid rgba(184,151,58,0.3);
+    background: rgba(184,151,58,0.08);
+    border-radius: 20px; padding: 5px 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #b8973a;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: #b8973a;
+  }
+
+  .hero-sub {
+    font-size: 15px; color: #555550;
+    max-width: 520px; margin: 0 auto 2.5rem;
+    line-height: 1.8; font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex; justify-content: center;
+    gap: 0; flex-wrap: wrap;
+    border: 1px solid rgba(184,151,58,0.25);
+    border-radius: 14px;
+    background: #fff;
+    max-width: 460px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(184,151,58,0.08);
+  }
+
+  .stat {
+    flex: 1; min-width: 100px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: #b8973a; line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 10px; color: #999990;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+
+  /* ── FILTERS ── */
+  .filters-wrap {
+    max-width: 860px; margin: 0 auto;
+    padding: 2rem 1.5rem 0;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+
+  .filter-group {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 11px; font-weight: 600; color: #999990;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    white-space: nowrap; min-width: 72px;
+  }
+
+  .filters {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: transparent;
+    color: #555550;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: #b8973a;
+    color: #b8973a;
+    background: rgba(184,151,58,0.08);
+  }
+
+  /* ── JOB LIST ── */
+  .jobs-wrap {
+    max-width: 860px; margin: 0 auto;
+    padding: 1.5rem 1.5rem 4rem;
+  }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-label-text {
+    font-size: 10px; font-weight: 700;
+    color: #999990; text-transform: uppercase; letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  .section-label-line {
+    flex: 1; height: 1px; background: rgba(0,0,0,0.08);
+  }
+
+  .section-label-count {
+    font-size: 11px; color: #999990;
+    white-space: nowrap;
+  }
+
+  .job-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    animation: fadeUp 0.4s ease both;
+    position: relative;
+  }
+
+  .job-card::before {
+    content: '';
+    position: absolute; left: 0; top: 12px; bottom: 12px;
+    width: 3px; border-radius: 0 2px 2px 0;
+    background: transparent;
+    transition: background 0.2s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .job-card:hover {
+    border-color: rgba(184,151,58,0.4);
+    box-shadow: 0 4px 20px rgba(184,151,58,0.1);
+    transform: translateY(-2px);
+  }
+
+  .job-card:hover::before { background: #b8973a; }
+
+  .job-card.hidden { display: none; }
+
+  .card-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 12px;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 15px; font-weight: 600;
+    color: #1a1a1a; line-height: 1.4; flex: 1;
+  }
+
+  .badge-new {
+    flex-shrink: 0;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #b8973a;
+    border: 1px solid rgba(184,151,58,0.4);
+    background: rgba(184,151,58,0.08);
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  .card-meta {
+    display: flex; flex-wrap: wrap; gap: 4px 14px;
+    margin-bottom: 0.875rem;
+  }
+
+  .meta-item {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 12px; color: #999990;
+  }
+
+  .meta-icon { font-size: 11px; }
+
+  .card-footer {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .card-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+  .salary {
+    font-size: 13px; font-weight: 700;
+    color: #1a1a1a;
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .tag {
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px; border: 1px solid;
+  }
+
+  .tag-tech   { color: #555; border-color: rgba(0,0,0,0.15); background: #f5f5f3; }
+  .tag-remote { color: #b8973a; border-color: rgba(184,151,58,0.3); background: rgba(184,151,58,0.08); }
+  .tag-onsite { color: #444; border-color: rgba(0,0,0,0.2); background: #f0efe8; }
+
+  .apply-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #1a1a1a;
+    color: #b8973a;
+    border: none; border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-btn:hover { background: #2d2d2d; transform: scale(1.02); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 2rem 1.5rem;
+    font-size: 12px; color: #999990;
+    background: #fafaf8;
+  }
+
+  footer strong { color: #b8973a; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .card-footer { flex-direction: column; align-items: flex-start; }
+    .apply-btn { width: 100%; justify-content: center; }
+  }
+
+  .no-results {
+    text-align: center; padding: 3rem 1rem;
+    color: #999990; font-size: 14px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-mark">N</div>
+    <div class="logo-name">Nguyen An <span>Job</span></div>
+  </a>
+  <span class="header-badge">● Cập nhật 07/05/2026</span>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Đang tuyển dụng</div>
+  <h1 class="hero-title">Việc làm IT & Tech<br><em>chọn lọc hôm nay</em></h1>
+  <p class="hero-sub">Những vị trí tuyển dụng uy tín từ các công ty hàng đầu, được xác thực và cập nhật hàng ngày bởi <strong>Nguyen An Job</strong>.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num" id="total-count">36</div>
+      <div class="stat-label">Vị trí</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15</div>
+      <div class="stat-label">Công ty</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">07/05</div>
+      <div class="stat-label">Mới nhất</div>
+    </div>
+  </div>
+</section>
+
+<div class="filters-wrap">
+  <div class="filter-group">
+    <span class="filter-label">Hình thức</span>
+    <div class="filters">
+      <button class="filter-btn active" data-type="mode" data-filter="all">Tất cả</button>
+      <button class="filter-btn" data-type="mode" data-filter="remote">Remote</button>
+      <button class="filter-btn" data-type="mode" data-filter="onsite">Onsite</button>
+    </div>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Thành phố</span>
+    <div class="filters">
+      <button class="filter-btn active" data-type="city" data-filter="all">Tất cả</button>
+      <button class="filter-btn" data-type="city" data-filter="hn">Hà Nội</button>
+      <button class="filter-btn" data-type="city" data-filter="hcm">TP.HCM</button>
+    </div>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Kỹ năng</span>
+    <div class="filters">
+      <button class="filter-btn active" data-type="skill" data-filter="all">Tất cả</button>
+      <button class="filter-btn" data-type="skill" data-filter="java">Java</button>
+      <button class="filter-btn" data-type="skill" data-filter="python">Python</button>
+      <button class="filter-btn" data-type="skill" data-filter="angular">Angular</button>
+      <button class="filter-btn" data-type="skill" data-filter="sql">SQL</button>
+      <button class="filter-btn" data-type="skill" data-filter="data engineer">Data Engineer</button>
+      <button class="filter-btn" data-type="skill" data-filter="tester">Tester</button>
+      <button class="filter-btn" data-type="skill" data-filter="ba">BA</button>
+      <button class="filter-btn" data-type="skill" data-filter="c++">C++</button>
+      <button class="filter-btn" data-type="skill" data-filter="devops">DevOps</button>
+      <button class="filter-btn" data-type="skill" data-filter="ios">IOS</button>
+      <button class="filter-btn" data-type="skill" data-filter="flutter">Flutter</button>
+    </div>
+  </div>
+</div>
+
+<div class="jobs-wrap">
+  <div class="section-label">
+    <span class="section-label-text">Danh sách việc làm</span>
+    <span class="section-label-line"></span>
+    <span class="section-label-count" id="visible-count">26 vị trí</span>
+  </div>
+
+  <div id="job-list"></div>
+  <div class="no-results" id="no-results">Không có vị trí phù hợp với bộ lọc này.</div>
+</div>
+
+<footer>
+  <p>© 2026 <strong>Nguyen An Job</strong> &nbsp;·&nbsp; Kết nối nhân tài Việt &nbsp;·&nbsp; Cập nhật hàng ngày</p>
+</footer>
+
+<script>
+const JOBS = [
+  {
+    id:1, title:"[REMOTE] Full-Stack Engineer (AI Platform)", company:"Savvycom",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"10 năm",
+    tags:["Javascript","SQL"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-full-stack-engineer-ai-platform?aff=nguyenan"
+  },
+  {
+    id:2, title:"[REMOTE] Embedded System Engineer", company:"Savvycom",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["C++","C"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-embedded-system-engineer?aff=nguyenan"
+  },
+  {
+    id:3, title:"[ONSITE] Developer (PeopleSoft) – Hoàng Cầu, HN", company:"FIS",
+    type:"Full-time", location:"Hà Nội", salary:"20–25 triệu", exp:"2 năm",
+    tags:["SQL"], mode:"onsite", city:"hn", date:"05-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-developer-peoplesoft-hoang-cau-hn?aff=nguyenan"
+  },
+  {
+    id:4, title:"[ONSITE] BA – Human Resource – HN", company:"FIS",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"2 năm",
+    tags:["HR","BA"], mode:"onsite", city:"hn", date:"05-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-ba-human-resource-hn?aff=nguyenan"
+  },
+  {
+    id:5, title:"[ONSITE] BA – SuccessFactors – HN/HCM", company:"FIS",
+    type:"Full-time", location:"Hà Nội / TP.HCM", salary:"15–20 triệu", exp:"2 năm",
+    tags:["HR","SAP"], mode:"onsite", city:"hn hcm", date:"05-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-ba-successfactors-hn-hcm?aff=nguyenan"
+  },
+  {
+    id:6, title:"[ONSITE] Performance Test – Trần Duy Hưng/Quang Trung, HN", company:"MOR",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"3 năm",
+    tags:["Tester"], mode:"onsite", city:"hn", date:"05-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-performance-test-tran-duy-hung-quang-trung-hn?aff=nguyenan"
+  },
+  {
+    id:7, title:"[REMOTE] Scala Developer", company:"TEKAI",
+    type:"Full-time", location:"Remote", salary:"35–40 triệu", exp:"5 năm trở lên",
+    tags:["SQL"], mode:"remote", city:"", date:"05-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-scala-developer?aff=nguyenan"
+  },
+  {
+    id:8, title:"[REMOTE] Power BI Developer", company:"Vitex",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["Power App"], mode:"remote", city:"", date:"04-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-power-bi-developer?aff=nguyenan"
+  },
+  {
+    id:9, title:"[ONSITE] QA Engineer – Trường Chinh, HN", company:"SphinX",
+    type:"Full-time", location:"Hà Nội", salary:"15–18 triệu", exp:"3 năm",
+    tags:["Tester"], mode:"onsite", city:"hn", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-qa-engineer-truong-chinh-hn?aff=nguyenan"
+  },
+  {
+    id:10, title:"[REMOTE] BI Engineer", company:"AHT",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["Data Engineer"], mode:"remote", city:"", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-bi-engineer?aff=nguyenan"
+  },
+  {
+    id:11, title:"[REMOTE] Fullstack Developer (Java + Angular)", company:"Sotatek",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["Angular","Java"], mode:"remote", city:"", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-fullstack-developer-java-angular-2?aff=nguyenan"
+  },
+  {
+    id:12, title:"[REMOTE] SQL Developer (Python/SparkSQL)", company:"MOR",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"8 năm",
+    tags:["Python"], mode:"remote", city:"", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-sql-developer-python-sparksql?aff=nguyenan"
+  },
+  {
+    id:13, title:"[ONSITE] Backend Developer (C/C++ / Java – Trainable)", company:"UNIT",
+    type:"Full-time", location:"Hà Nội", salary:"25–30 triệu", exp:"3 năm",
+    tags:["C++","C"], mode:"onsite", city:"hn", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-backend-developer-c-c-java-trainable?aff=nguyenan"
+  },
+  {
+    id:14, title:"[ONSITE] Senior QA Engineer – Láng Hạ, HN", company:"SphinX",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"3 năm",
+    tags:["Tester"], mode:"onsite", city:"hn", date:"29-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-senior-qa-engineer-lang-ha-hn?aff=nguyenan"
+  },
+  {
+    id:15, title:"[Onsite] Angular Developer – Ngô Sỹ Liên, Hà Nội", company:"Novabyte",
+    type:"Full-time", location:"Hà Nội", salary:"15–18 triệu", exp:"3 năm",
+    tags:["Angular"], mode:"onsite", city:"hn", date:"23-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-angular-developer-ngo-sy-lien-ha-noi?aff=nguyenan"
+  },
+  {
+    id:16, title:"[ONSITE] Data Engineer – Đống Đa, Hà Nội", company:"ParaLine",
+    type:"Full-time", location:"Hà Nội", salary:"25–30 triệu", exp:"3 năm",
+    tags:["Data Engineer"], mode:"onsite", city:"hn", date:"22-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-data-engineer-dong-da-ha-noi?aff=nguyenan"
+  },
+  {
+    id:17, title:"[ONSITE] Java Developer – Cát Linh/Bà Triệu, HN", company:"MOR",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"3 năm",
+    tags:["Java"], mode:"onsite", city:"hn", date:"21-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-java-developer-cat-linh-ba-trieu-hn?aff=nguyenan"
+  },
+  {
+    id:18, title:"[Remote] Data Engineer (Senior)", company:"MOR",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"7 năm",
+    tags:["Data Engineer"], mode:"remote", city:"", date:"21-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-data-engineer-senior?aff=nguyenan"
+  },
+  {
+    id:19, title:"[Onsite] Angular Developer (Middle/Senior) – Cát Linh/Bà Triệu, HN", company:"MOR",
+    type:"Full-time", location:"Hà Nội", salary:"20–25 triệu", exp:"3 năm",
+    tags:["Angular"], mode:"onsite", city:"hn", date:"21-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-angular-developer-middle-senior-ha-noi-cat-linh-ba-trieu?aff=nguyenan"
+  },
+  {
+    id:20, title:"[ONSITE] Java Developer – Nguyễn Chí Thanh, HN", company:"SphinX",
+    type:"Full-time", location:"Hà Nội", salary:"20–25 triệu", exp:"4 năm",
+    tags:["Java"], mode:"onsite", city:"hn", date:"20-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-java-developer-nguyen-chi-thanh-hn?aff=nguyenan"
+  },
+  {
+    id:21, title:"[ONSITE] Business Analyst – Nguyễn Chí Thanh, HN", company:"SphinX",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"3 năm",
+    tags:["BA"], mode:"onsite", city:"hn", date:"03-04-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-business-analyst-nguyen-chi-thanh-hn?aff=nguyenan"
+  },
+  {
+    id:22, title:"[REMOTE] Magento Developer", company:"VMO",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["Magento"], mode:"remote", city:"", date:"12-03-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-magento-developer?aff=nguyenan"
+  },
+  {
+    id:23, title:"[REMOTE] Python Developer", company:"MOR",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"7 năm",
+    tags:["Python"], mode:"remote", city:"", date:"02-03-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-python-developer-2?aff=nguyenan"
+  },
+  {
+    id:24, title:"[ONSITE] Tester – Dịch Vọng Hậu, Hà Nội", company:"AHT",
+    type:"Full-time", location:"Hà Nội", salary:"15–18 triệu", exp:"Không yêu cầu",
+    tags:["Tester"], mode:"onsite", city:"hn", date:"05-02-2026", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-tester-dich-vong-hau-ha-noi?aff=nguyenan"
+  },
+  {
+    id:25, title:"[REMOTE] Salesforce Developer", company:"AHT",
+    type:"Full-time", location:"Remote", salary:"35–40 triệu", exp:"Không yêu cầu",
+    tags:["Salesforce"], mode:"remote", city:"", date:"15-12-2025", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-salesforce-developer?aff=nguyenan"
+  },
+  {
+    id:26, title:"[REMOTE] Data Engineer", company:"Sotatek",
+    type:"Full-time", location:"Remote", salary:"35–40 triệu", exp:"Không yêu cầu",
+    tags:["Data Engineer"], mode:"remote", city:"", date:"14-12-2025", isNew:false,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-data-engineer?aff=nguyenan"
+  },
+  {
+    id:27, title:"[REMOTE] Security Engineer", company:"Sotatek",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"Không yêu cầu",
+    tags:["Network Security"], mode:"remote", city:"", date:"07-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-security-engineer?aff=nguyenan"
+  },
+  {
+    id:28, title:"[ONSITE] Business Analyst – HCM", company:"VWorks",
+    type:"Full-time", location:"TP.HCM", salary:"25–30 triệu", exp:"Không yêu cầu",
+    tags:["BA"], mode:"onsite", city:"hcm", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-business-analyst-hcm?aff=nguyenan"
+  },
+  {
+    id:29, title:"[ONSITE] Flutter – Dương Đình Nghệ, HN", company:"CODLUCK",
+    type:"Full-time", location:"Hà Nội", salary:"15–18 triệu", exp:"2 năm",
+    tags:["Flutter"], mode:"onsite", city:"hn", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-fultter-duong-dinh-nghe-hn?aff=nguyenan"
+  },
+  {
+    id:30, title:"[ONSITE] IOS Developer – Dương Đình Nghệ, HN", company:"CODLUCK",
+    type:"Full-time", location:"Hà Nội", salary:"15–18 triệu", exp:"2 năm",
+    tags:["IOS"], mode:"onsite", city:"hn", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-ios-developer-duong-dinh-nghe-hn?aff=nguyenan"
+  },
+  {
+    id:31, title:"[REMOTE] DevOps / Platform Engineer (Cloud & Infrastructure)", company:"Savvycom",
+    type:"Full-time", location:"Remote", salary:"30–33 triệu", exp:"10 năm",
+    tags:["DevOps"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-devops-platform-engineer-cloud-infrastructure?aff=nguyenan"
+  },
+  {
+    id:32, title:"[REMOTE] Web Game Developer", company:"Techvify",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"5 năm trở lên",
+    tags:["Javascript","Typescript"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-web-game-developer?aff=nguyenan"
+  },
+  {
+    id:33, title:"[ONSITE] Java Developer – Hoàng Cầu, HN", company:"BnK",
+    type:"Full-time", location:"Hà Nội", salary:"15–20 triệu", exp:"3 năm",
+    tags:["Java"], mode:"onsite", city:"hn", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-java-developer-hoang-cau-hn?aff=nguyenan"
+  },
+  {
+    id:34, title:"[REMOTE] Angular Developer", company:"Sotatek",
+    type:"Full-time", location:"Remote", salary:"30–35 triệu", exp:"3 năm",
+    tags:["Angular"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-angular-devloper?aff=nguyenan"
+  },
+  {
+    id:35, title:"[Onsite] QC – Hoàng Cầu, Hà Nội", company:"BnK",
+    type:"Full-time", location:"Hà Nội", salary:"20–25 triệu", exp:"3 năm",
+    tags:["Tester"], mode:"onsite", city:"hn", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/onsite-qc-hoang-cau-ha-noi?aff=nguyenan"
+  },
+  {
+    id:36, title:"[REMOTE] Senior Backend / Data Platform Engineer", company:"Savvycom",
+    type:"Full-time", location:"Remote", salary:"30–33 triệu", exp:"Trên 10 năm",
+    tags:["Javascript","NodeJS"], mode:"remote", city:"", date:"06-05-2026", isNew:true,
+    link:"https://tuyendung.novabyte.vn/tuyen-dung/remote-senior-backend-data-platform-engineer?aff=nguyenan"
+  }
+];
+
+function renderJobs(list) {
+  const container = document.getElementById('job-list');
+  container.innerHTML = list.map((j, i) => `
+    <a class="job-card" href="${j.link}" target="_blank" rel="noopener"
+       data-mode="${j.mode}" data-city="${j.city}"
+       data-tags="${j.tags.map(t=>t.toLowerCase()).join(' ')}"
+       style="animation-delay:${i * 0.04}s">
+      <div class="card-top">
+        <div class="card-title">${j.title}</div>
+        ${j.isNew ? '<span class="badge-new">New</span>' : ''}
+      </div>
+      <div class="card-meta">
+        <span class="meta-item"><span class="meta-icon">💼</span>${j.type}</span>
+        <span class="meta-item"><span class="meta-icon">📍</span>${j.location}</span>
+        <span class="meta-item"><span class="meta-icon">🕐</span>${j.exp}</span>
+        <span class="meta-item"><span class="meta-icon">📅</span>${j.date}</span>
+      </div>
+      <div class="card-footer">
+        <div class="card-left">
+          <div class="salary">💰 ${j.salary}</div>
+          <div class="tags">
+            ${j.tags.map(t => `<span class="tag tag-tech">${t}</span>`).join('')}
+            <span class="tag ${j.mode === 'remote' ? 'tag-remote' : 'tag-onsite'}">${j.mode === 'remote' ? 'Remote' : 'Onsite'}</span>
+          </div>
+        </div>
+        <span class="apply-btn">Xem & Ứng tuyển →</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+renderJobs(JOBS);
+
+const activeFilters = { mode: 'all', city: 'all', skill: 'all' };
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.job-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const modeOk  = activeFilters.mode  === 'all' || card.dataset.mode === activeFilters.mode;
+    const cityOk  = activeFilters.city  === 'all' || card.dataset.city.includes(activeFilters.city);
+    const skillOk = activeFilters.skill === 'all' || card.dataset.tags.includes(activeFilters.skill);
+    const show = modeOk && cityOk && skillOk;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('visible-count').textContent = visible + ' vị trí';
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.type;
+    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilters[type] = btn.dataset.filter;
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
